@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - DevHunt</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #e74c3c;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #666;
+    }
+    .home-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0070f3;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    // Attempt to fix SPA routing issues by redirecting to home
+    const path = window.location.pathname;
+    if (path !== '/' && !path.startsWith('/_next/') && !path.startsWith('/api/')) {
+      console.log('Detected 404 for path: ' + path);
+      // Check if we should try to redirect to a known route
+      if (path.includes('/projects/') || path.includes('/forum/') || path.includes('/auth/')) {
+        // Don't redirect immediately to allow the server to try serving the page
+        setTimeout(function() {
+          // If we're still on the 404 page after a delay, redirect to home
+          if (document.title === 'Page Not Found - DevHunt') {
+            window.location.href = '/';
+          }
+        }, 3000);
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p>The page you're looking for doesn't exist or has been moved.</p>
+    <p>We're attempting to fix this automatically. Please wait...</p>
+    <p>If you're not redirected automatically, you can:</p>
+    <a href="/" class="home-button">Go to Homepage</a>
+  </div>
+</body>
+</html> 
