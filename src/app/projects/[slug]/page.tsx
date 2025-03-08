@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import { getProjectBySlug, getProjects } from '@/lib/api';
 import ProjectDetail from '@/components/projects/ProjectDetail';
 
+export const dynamic = 'force-dynamic';
+
 interface ProjectPageProps {
   params: {
     slug: string;

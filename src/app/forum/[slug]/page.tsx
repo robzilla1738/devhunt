@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import { getForumPostBySlug } from '@/lib/api';
 import ForumPostDetail from '@/components/forum/ForumPostDetail';
 
+export const dynamic = 'force-dynamic';
+
 interface ForumPostPageProps {
   params: {
     slug: string;
